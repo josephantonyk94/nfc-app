@@ -38,62 +38,74 @@ class _Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NFC Manager'),
+        title: Text('NFC APP'),
       ),
-      body: ListView(
-        padding: EdgeInsets.all(2),
-        children: [
-          FormSection(children: [
-            FormRow(
-              title: Text('Tag - Read'),
-              trailing: Icon(Icons.chevron_right),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TagReadPage.withDependency(),
-                  )),
-            ),
-            FormRow(
-              title: Text('Ndef - Write'),
-              trailing: Icon(Icons.chevron_right),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NdefWritePage.withDependency(),
-                  )),
-            ),
-            FormRow(
-              title: Text('Ndef - Write Lock'),
-              trailing: Icon(Icons.chevron_right),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NdefWriteLockPage.withDependency(),
-                  )),
-            ),
-            if (Platform.isAndroid)
-              FormRow(
-                title: Text('Ndef - Format'),
-                trailing: Icon(Icons.chevron_right),
-                onTap: () => Navigator.push(
+      // body: ListView(
+      //   padding: EdgeInsets.all(2),
+      //   children: [
+      //     FormSection(children: [
+      //      ,
+      //       FormRow(
+      //         title: Text('Ndef - Write'),
+      //         trailing: Icon(Icons.chevron_right),
+      //         onTap: () => Navigator.push(
+      //             context,
+      //             MaterialPageRoute(
+      //               builder: (context) => NdefWritePage.withDependency(),
+      //             )),
+      //       ),
+      //       FormRow(
+      //         title: Text('Ndef - Write Lock'),
+      //         trailing: Icon(Icons.chevron_right),
+      //         onTap: () => Navigator.push(
+      //             context,
+      //             MaterialPageRoute(
+      //               builder: (context) => NdefWriteLockPage.withDependency(),
+      //             )),
+      //       ),
+      //       if (Platform.isAndroid)
+      //         FormRow(
+      //           title: Text('Ndef - Format'),
+      //           trailing: Icon(Icons.chevron_right),
+      //           onTap: () => Navigator.push(
+      //               context,
+      //               MaterialPageRoute(
+      //                 builder: (context) => NdefFormatPage.withDependency(),
+      //               )),
+      //         ),
+      //     ]),
+      //     FormSection(children: [
+      //       FormRow(
+      //         title: Text('About'),
+      //         trailing: Icon(Icons.chevron_right),
+      //         onTap: () => Navigator.push(
+      //             context,
+      //             MaterialPageRoute(
+      //               builder: (context) => AboutPage(),
+      //             )),
+      //       ),
+      //     ]),
+
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+                onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NdefFormatPage.withDependency(),
+                      builder: (context) => TagReadPage.withDependency(),
                     )),
-              ),
-          ]),
-          FormSection(children: [
-            FormRow(
-              title: Text('About'),
-              trailing: Icon(Icons.chevron_right),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AboutPage(),
-                  )),
-            ),
-          ]),
-        ],
+                child: const Text("Receive")),
+            TextButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NdefWritePage.withDependency(),
+                    )),
+                child: const Text("Send"))
+          ],
+        ),
       ),
     );
   }

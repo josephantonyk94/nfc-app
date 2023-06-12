@@ -34,7 +34,12 @@ class TagReadModel with ChangeNotifier {
             polling.manufacturerParameter;
       }
     }
-
+    await NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
+      this.tag = tag;
+      additionalData = tag.data;
+      //result.value = tag.data;
+      NfcManager.instance.stopSession();
+    });
     notifyListeners();
     return '[Tag - Read] is completed.';
   }
